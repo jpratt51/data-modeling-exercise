@@ -54,6 +54,10 @@ ALTER TABLE matches ADD FOREIGN KEY (home_team) REFERENCES home_team(id);
 
 ALTER TABLE matches ADD FOREIGN KEY (away_team) REFERENCES away_team(id);
 
+-- ALTER TABLE matches ADD FOREIGN KEY (away_team) REFERENCES team(id);
+
+-- Can create team table and have foreign key different name than table to make two references to the same table. 
+
 ALTER TABLE matches ADD FOREIGN KEY (referees_id) REFERENCES referees(id);
 
 -- Testing database: VVVVV
@@ -85,6 +89,8 @@ INSERT INTO goals (matches_id,players_id) VALUES (1,1),(1,10),(2,2),(2,9),(3,9),
 -- Database tests:
 
 SELECT matches.date,matches.location,home_team.h_team,away_team.a_team FROM matches JOIN home_team ON matches.home_team = home_team.id JOIN away_team ON matches.away_team = away_team.id;
+
+-- team.name AS h_team, team.name AS a_team
 
 Result:
     date    |     location     |  h_team  |  a_team
